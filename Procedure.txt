@@ -30,3 +30,28 @@ inner join proveedor on producto.Proveedor_idProveedor = proveedor.idProveedor
 where Proveedor.idProveedor = id_proveedor
 and producto.cantidad > 1
 order by idProducto asc;
+
+
+
+delimiter $$
+create procedure registrar_cliente(
+    `NOMBRE` varchar(50),
+    `Apellido` varchar(50),
+    `Contrasena` varchar(50)
+
+)
+begin
+
+    insert into cliente values (last_insert_id(),NOMBRE,Apellido,Contrasena);
+end $$
+
+
+
+
+delimiter $$
+create procedure registrar_tipo_producto(
+    `NOMBRE` varchar(50)
+)
+begin
+    insert into tipo_producto values (last_insert_id(),NOMBRE);
+end $$
