@@ -1,0 +1,32 @@
+create procedure listar_productos()
+select producto.idProducto as id  , producto.nombre as producto, Tipo_producto.nombre as tipo, proveedor.nombre as proveedor, producto.valor from producto
+inner join Tipo_producto on producto.Tipo_producto_idTipo_producto = Tipo_producto.idTipo_producto
+inner join proveedor on producto.Proveedor_idProveedor = proveedor.idProveedor
+where producto.cantidad > 0
+order by idProducto asc;
+
+
+
+
+
+create procedure listar_productos_tipo(
+	`id_tipo` int
+)
+select producto.idProducto as id  , producto.nombre as producto, Tipo_producto.nombre as tipo, proveedor.nombre as proveedor, producto.valor from producto
+inner join Tipo_producto on producto.Tipo_producto_idTipo_producto = Tipo_producto.idTipo_producto
+inner join proveedor on producto.Proveedor_idProveedor = proveedor.idProveedor
+where Tipo_producto.idTipo_producto = id_tipo
+and producto.cantidad > 1
+order by idProducto asc;
+
+
+
+create procedure listar_productos_proveedor(
+    `id_proveedor` int
+)
+select producto.idProducto as id  , producto.nombre as producto, Tipo_producto.nombre as tipo, proveedor.nombre as proveedor, producto.valor from producto
+inner join Tipo_producto on producto.Tipo_producto_idTipo_producto = Tipo_producto.idTipo_producto
+inner join proveedor on producto.Proveedor_idProveedor = proveedor.idProveedor
+where Proveedor.idProveedor = id_proveedor
+and producto.cantidad > 1
+order by idProducto asc;
