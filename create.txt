@@ -166,7 +166,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`factura` (
 ENGINE = InnoDB;
 
 
-alter table producto add cantidad int ;
+
+alter table producto add cantidad int null;
 
 update producto
 set mydb.Producto.cantidad = 5

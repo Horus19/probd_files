@@ -142,8 +142,9 @@ insert into metodo_pago values (6,"Efecty");
 
 
 
-insert into descuento values (1,5)
-insert into descuento values (2,10)
-insert into descuento values (3,15)
 
-insert into cliente values (1,"Horacio","Camacho","1234")
+insert into descuento values (1,5);
+insert into descuento values (2,10);
+insert into descuento values (3,15);
+
+insert into cliente values (1,"Horacio","Camacho","1234");
