@@ -139,3 +139,9 @@ insert into metodo_pago values (3,"Paypal");
 insert into metodo_pago values (4,"PSE");
 insert into metodo_pago values (5,"MercadoPago");
 insert into metodo_pago values (6,"Efecty");
+
+
+
+insert into descuento values (1,5)
+insert into descuento values (2,10)
+insert into descuento values (3,15)
