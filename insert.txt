@@ -131,3 +131,11 @@ insert into producto values (91,"TECLADO GAMER CORSAIR K65 RAPIDFIRE RGB",10,13,
 insert into producto values (92,"TECLADO GAMER LOGITECH G213 RGB",10,22,258000);
 insert into producto values (93,"ADAPTADOR RED USB Wi-Fi ASUS NANO 300N / AC53",11,20,55000);
 insert into producto values (94,"QUEMADOR DE DVD EXTERNO USB SAMSUNG SLIM",11,10,96000);
+
+
+insert into metodo_pago values (1,"Tarjeta Crédito / Débito");
+insert into metodo_pago values (2,"Transferencia Bancaria");
+insert into metodo_pago values (3,"Paypal");
+insert into metodo_pago values (4,"PSE");
+insert into metodo_pago values (5,"MercadoPago");
+insert into metodo_pago values (6,"Efecty");
