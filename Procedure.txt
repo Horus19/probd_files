@@ -55,3 +55,78 @@ create procedure registrar_tipo_producto(
 begin
     insert into tipo_producto values (last_insert_id(),NOMBRE);
 end $$
+
+
+
+delimiter $$
+create procedure Crear_pedido()
+begin
+select @id := idPedido from Pedido
+order by idPedido desc
+limit 1;
+insert into Pedido (idPedido) values (@id + 1);
+select  @id +1;
+end $$
+
+
+
+create procedure producto_en_pedido(
+    idProducto int,
+    idPedido int
+)
+insert into Pedido_has_Producto values (idPedido,idProducto);
+
+
+create procedure Productos_en_carrito(
+    idPedido int
+)
+select Producto.Nombre, Producto.valor from Pedido_has_Producto
+inner join Producto on Producto.idProducto = Producto_idProducto
+where Pedido_idPedido = idPedido;
+
+create procedure valor_total(
+    idPedido int
+)
+select SUM(Producto.valor) from Pedido_has_Producto
+inner join Producto on Producto.idProducto = Producto_idProducto
+where Pedido_idPedido = idPedido;
+
+
+create procedure eliminar_de_carrito(
+    nombre_producto varchar(70),
+    id_pedido int
+)
+delete from Pedido_has_Producto
+where Pedido_idPedido = id_pedido
+and Producto_idProducto = (select idProducto from Producto where Nombre = nombre_producto);
+
+
+
+delimiter $$
+create procedure registro_factura(
+    id_pedido int,
+    id_envio int,
+    id_cliente int,
+    id_metodo int
+)
+begin
+select  @idfac := idfactura from factura
+order by idfactura desc
+limit 1;
+insert into factura (idfactura, Pedido_idPedido, cliente_idcliente, metodo_pago_idmetodo_pago, Descuento_idDescuento, envio_id_envio) values (@idfac + 1,id_pedido,id_cliente,id_metodo,1,id_envio);
+select @idfac + 1;
+end $$
+
+
+delimiter $$
+create procedure registro_envio(
+    direccion varchar(70)
+)
+begin
+select  @idenv := id_envio from envio
+order by id_envio desc
+limit 1;
+insert into envio values (@idenv + 1, direccion);
+select @idenv + 1;
+end $$
+
